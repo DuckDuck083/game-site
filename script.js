@@ -7,7 +7,7 @@
 const games = [
   {
     title: "PrototypeFPS",
-    description: "A fast tactical combat sandbox built around responsive weapons, compact maps, and rapid iteration.",
+    description: "A fast tactical combat sandbox made in Unity, built around responsive weapons, compact maps, and rapid iteration.",
     status: "Playable now",
     category: "playable",
     platform: "Windows · Free",
