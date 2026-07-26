@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Iron Signal Games — small-team games, prototypes, and field reports.">
+  <title>Iron Signal Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="home">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Iron Signal Games home">
+      <span class="brand-mark">IS</span><span>IRON SIGNAL <b>GAMES</b></span>
+    </a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="active" href="index.html">Home</a><a href="games.html">Games</a><a href="prototypefps.html">PrototypeFPS</a><a href="projects.html">Projects</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span> Independent game studio // Est. 2026</p>
+        <h1>SMALL TEAM.<br><em>BIG MISSIONS.</em></h1>
+        <p class="lede">We build focused, atmospheric games where every choice matters. No filler. Just memorable worlds and systems worth mastering.</p>
+        <div class="actions">
+          <a class="button primary" href="games.html">Explore games <span>↗</span></a>
+          <a class="button ghost" href="#updates">Read field reports</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="radar"><i></i><i></i><i></i><span></span></div>
+        <p>TRANSMISSION<br><b>RECEIVED</b></p>
+      </div>
+      <div class="scroll-cue">SCROLL TO BRIEFING <span>↓</span></div>
+    </section>
+
+    <section class="section featured">
+      <div class="section-heading reveal"><p class="eyebrow"><span></span> Featured deployment</p><h2>ENTER THE <em>PROVING GROUND</em></h2></div>
+      <article class="feature-card reveal">
+        <div class="feature-art artwork prototype-art" role="img" aria-label="PrototypeFPS game artwork">
+          <span class="target t1"></span><span class="target t2"></span><span class="scan-line"></span>
+          <div class="art-label">BUILD 0.7.2 // LIVE</div>
+        </div>
+        <div class="feature-info">
+          <div><span class="status live">Playable now</span><span class="meta">Tactical FPS · Windows</span></div>
+          <h3>PROTOTYPE<span>FPS</span></h3>
+          <p>A fast, stripped-back first-person combat sandbox. Test experimental weapons, clear hostile sectors, and help shape every new build.</p>
+          <ul class="spec-list"><li><b>06</b> Maps</li><li><b>12</b> Weapons</li><li><b>∞</b> Replayability</li></ul>
+          <a class="text-link" href="prototypefps.html">View mission details <span>→</span></a>
+        </div>
+      </article>
+    </section>
+
+    <section class="section updates" id="updates">
+      <div class="section-heading row reveal"><div><p class="eyebrow"><span></span> Signal log</p><h2>LATEST <em>UPDATES</em></h2></div><a class="text-link" href="prototypefps.html#updates">Full archive <span>→</span></a></div>
+      <div class="update-grid" id="home-updates"></div>
+    </section>
+
+    <section class="cta-band reveal"><p>THE NEXT MISSION IS ALREADY UNDERWAY.</p><h2>STAY ON FREQUENCY.</h2><a class="button primary" href="projects.html">See what's next <span>↗</span></a></section>
+  </main>
+  <footer><a class="brand" href="index.html"><span class="brand-mark">IS</span><span>IRON SIGNAL <b>GAMES</b></span></a><p>Independent games. Built with intent.</p><span>© <span data-year></span> IRON SIGNAL</span></footer>
+</body>
+</html>
