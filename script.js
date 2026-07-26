@@ -12,24 +12,33 @@ const games = [
     category: "playable",
     platform: "Windows · Free",
     imageClass: "one", // IMAGE: replace this with imageUrl: "images/your-game.jpg"
-    link: "prototypefps.html" // DOWNLOAD/PAGE LINK: put your game URL here
+    link: "https://drive.google.com/file/d/1vwGdQ09eUQ04viy-0xRtiZNRX-cLX0ho/view?usp=drive_link"
   },
   {
-    title: "Ashfall Protocol",
-    description: "A tense survival strategy concept about holding a remote outpost through one impossible winter.",
+    title: "Bounty Hunter",
+    description: "Track your targets, collect the bounty, and survive the hunt in this browser-based action game.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "two",
+    link: "https://duckduck083.github.io/Hunter/"
+  },
+  {
+    title: "Coming Soon",
+    description: "A new Iron Signal game is currently being prepared. More mission details will be revealed here.",
     status: "In development",
     category: "development",
-    platform: "PC · Coming soon",
-    imageClass: "two",
+    platform: "To be announced",
+    imageClass: "three",
     link: "#"
   },
   {
-    title: "Signal Lost",
-    description: "A short atmospheric exploration experiment set aboard a station that should have stayed silent.",
+    title: "Coming Soon",
+    description: "Another game slot reserved for your next project. Change this card in script.js when it is ready.",
     status: "Concept",
     category: "concept",
-    platform: "Browser · Prototype",
-    imageClass: "three",
+    platform: "To be announced",
+    imageClass: "one",
     link: "#"
   }
 ];
@@ -59,7 +68,7 @@ if (gameGrid) {
         <div class="game-card-body">
           <div class="game-card-head"><span class="status${statusClass}">${game.status}</span><span class="platform">${game.platform}</span></div>
           <h2>${game.title}</h2><p>${game.description}</p>
-          <div class="card-actions"><a class="text-link" href="${game.link}">View game <span>→</span></a></div>
+          <div class="card-actions"><a class="text-link" href="${game.link}"${game.link.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${game.category === "playable" ? "Play / download" : "View game"} <span>→</span></a></div>
         </div></article>`;
     }).join("");
   };
