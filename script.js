@@ -136,11 +136,6 @@ if (gameGrid) {
   }));
 }
 
-const homeUpdates = document.querySelector("#home-updates");
-if (homeUpdates) homeUpdates.innerHTML = updates.map((update, index) => `
-  <article class="update-card reveal"><span class="number">LOG // 0${index + 1}</span>
-  <time>${update.date}</time><h3>${update.title}</h3><p>${update.text}</p></article>`).join("");
-
 const prototypeUpdates = document.querySelector("#prototype-updates");
 if (prototypeUpdates) prototypeUpdates.innerHTML = updates.slice(0, 2).map((update) => `
   <article class="timeline-item reveal"><time>${update.date}</time><div><h3>${update.title}</h3><p>${update.text}</p></div></article>`).join("");
