@@ -52,13 +52,6 @@ const games = [
   }
 ];
 
-const projects = [
-  { type: "Web experiment", title: "Mission Control", description: "A compact sci-fi dashboard concept for tracking builds, tasks, and launch milestones.", link: "#" },
-  { type: "Game jam", title: "Last Light", description: "A 48-hour top-down survival game where every shot drains the only light you have.", link: "#" },
-  { type: "Developer tool", title: "Loadout Lab", description: "A browser-based tool for quickly balancing weapons and exporting clean JSON data.", link: "#" },
-  { type: "Archive", title: "Early Experiments", description: "Small mechanics, shaders, prototypes, and lessons collected from the workshop.", link: "#" }
-];
-
 const updates = [
   { date: "July 18, 2026", title: "PrototypeFPS build 0.7.2", text: "Improved recoil feedback, enemy pathfinding, and performance across Sector 04." },
   { date: "July 02, 2026", title: "New project enters pre-production", text: "Early worldbuilding and system tests are underway for an unannounced project." },
@@ -88,14 +81,6 @@ if (gameGrid) {
     renderGames(button.dataset.filter);
   }));
 }
-
-const projectList = document.querySelector("#project-list");
-if (projectList) projectList.innerHTML = projects.map((project, index) => `
-  <a class="project-card reveal" href="${project.link}">
-    <span class="project-num">0${index + 1}</span>
-    <h2><span>${project.type}</span>${project.title}</h2>
-    <p>${project.description}</p><span class="arrow">↗</span>
-  </a>`).join("");
 
 const homeUpdates = document.querySelector("#home-updates");
 if (homeUpdates) homeUpdates.innerHTML = updates.map((update, index) => `

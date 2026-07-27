@@ -7,8 +7,7 @@ export default defineConfig({
       input: {
         home: resolve(import.meta.dirname, "index.html"),
         games: resolve(import.meta.dirname, "games.html"),
-        prototypefps: resolve(import.meta.dirname, "prototypefps.html"),
-        projects: resolve(import.meta.dirname, "projects.html")
+        prototypefps: resolve(import.meta.dirname, "prototypefps.html")
       }
     }
   }
