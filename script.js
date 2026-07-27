@@ -49,6 +49,15 @@ const games = [
     platform: "Browser · Free",
     imageClass: "two",
     link: "https://duckduck083.github.io/Fort/"
+  },
+  {
+    title: "Tower Defense",
+    description: "Place your defenses, stop incoming waves, and protect your position in this browser strategy game.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "three",
+    link: "https://duckduck083.github.io/sniper/"
   }
 ];
 
