@@ -24,22 +24,31 @@ const games = [
     link: "https://duckduck083.github.io/Hunter/"
   },
   {
-    title: "Coming Soon",
-    description: "A new Iron Signal game is currently being prepared. More mission details will be revealed here.",
-    status: "In development",
-    category: "development",
-    platform: "To be announced",
+    title: "Zombie Shooter",
+    description: "Fight through waves of the undead and survive for as long as you can in this browser shooter.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
     imageClass: "three",
-    link: "#"
+    link: "https://duckduck083.github.io/Zombie/"
   },
   {
-    title: "Coming Soon",
-    description: "Another game slot reserved for your next project. Change this card in script.js when it is ready.",
-    status: "Concept",
-    category: "concept",
-    platform: "To be announced",
+    title: "Mafia",
+    description: "Enter a dangerous criminal underworld in this browser-based Mafia game.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
     imageClass: "one",
-    link: "#"
+    link: "https://duckduck083.github.io/Mafia/"
+  },
+  {
+    title: "Fort",
+    description: "Build your defenses and hold the line in this playable browser game.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "two",
+    link: "https://duckduck083.github.io/Fort/"
   }
 ];
 
