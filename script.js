@@ -58,6 +58,51 @@ const games = [
     platform: "Browser · Free",
     imageClass: "three",
     link: "https://duckduck083.github.io/sniper/"
+  },
+  {
+    title: "My First Game",
+    description: "The platformer that started it all—jump in and play DuckDuck's first completed game.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "one",
+    link: "https://duckduck083.github.io/Platformer/"
+  },
+  {
+    title: "Garden",
+    description: "Grow and tend your own virtual garden in this relaxing browser game.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "two",
+    link: "https://duckduck083.github.io/Garden/"
+  },
+  {
+    title: "Fishing",
+    description: "Cast your line, catch fish, and enjoy a laid-back fishing trip from your browser.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "three",
+    link: "https://duckduck083.github.io/Fisch/"
+  },
+  {
+    title: "Blacksmith",
+    description: "Work the forge and master the craft in this browser-based blacksmith game.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "one",
+    link: "https://duckduck083.github.io/Blacksmith/"
+  },
+  {
+    title: "Chess",
+    description: "Plan your moves and challenge the board in this playable browser chess game.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "two",
+    link: "https://duckduck083.github.io/Chess/"
   }
 ];
 
