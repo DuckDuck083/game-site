@@ -60,8 +60,8 @@ const games = [
     link: "https://duckduck083.github.io/sniper/"
   },
   {
-    title: "My First Game",
-    description: "The platformer that started it all—jump in and play DuckDuck's first completed game.",
+    title: "Platformer",
+    description: "Jump through the levels in this straightforward browser platformer.",
     status: "Play now",
     category: "playable",
     platform: "Browser · Free",
