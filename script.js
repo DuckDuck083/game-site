@@ -168,21 +168,34 @@ document.body.insertAdjacentHTML("beforeend", `
     <button class="modal-close" type="button" aria-label="Close instructions">&times;</button>
     <p class="eyebrow"><span></span> Mission briefing</p>
     <h2 id="instructions-title">How to Play PrototypeFPS</h2>
-    <ol>
-      <li>Go to <a href="https://duckduck083.games" target="_blank" rel="noopener noreferrer">duckduck083.games</a>.</li>
-      <li>Click <strong>Download PrototypeFPS</strong>.</li>
-      <li>Wait for the ZIP file to finish downloading.</li>
-      <li>Right-click the ZIP file and choose <strong>Extract All...</strong></li>
-      <li>Open the extracted folder.</li>
-      <li>Double-click <strong>PrototypeFPS.exe</strong> to launch the game.</li>
-    </ol>
-    <h3>If Windows shows a security warning</h3>
-    <ol><li>Click <strong>More info</strong>.</li><li>Click <strong>Run anyway</strong>.</li></ol>
-    <p class="modal-note">Windows sometimes does this for games made by independent developers.</p>
-    <h3>Notes</h3>
+    <div class="instruction-section">
+      <b class="instruction-number">1</b>
+      <div><h3>Download the game</h3>
+        <p>Open the <a href="prototypefps.html">PrototypeFPS page</a> and click <strong>Download for Windows</strong>. Google Drive will open; use its Download button and wait for the ZIP file to finish.</p>
+      </div>
+    </div>
+    <div class="instruction-section">
+      <b class="instruction-number">2</b>
+      <div><h3>Extract the ZIP file</h3>
+        <p>Open your <strong>Downloads</strong> folder. Right-click the downloaded ZIP file, choose <strong>Extract All...</strong>, and then click <strong>Extract</strong>.</p>
+      </div>
+    </div>
+    <div class="instruction-section">
+      <b class="instruction-number">3</b>
+      <div><h3>Launch PrototypeFPS</h3>
+        <p>Open the newly extracted folder and double-click <strong>PrototypeFPS.exe</strong>.</p>
+      </div>
+    </div>
+    <div class="instruction-section warning-step">
+      <b class="instruction-number">!</b>
+      <div><h3>If Windows blocks the game</h3>
+        <p>On the blue security window, click <strong>More info</strong>, then click <strong>Run anyway</strong>. Windows may show this warning because PrototypeFPS is an independent game.</p>
+      </div>
+    </div>
+    <h3>Important notes</h3>
     <ul>
-      <li>Don't run the game directly from inside the ZIP file—extract it first.</li>
-      <li>Keep the .exe and the PrototypeFPS_Data folder together in the same folder.</li>
+      <li>Do not launch the game from inside the ZIP file. Extract it first.</li>
+      <li>Keep <strong>PrototypeFPS.exe</strong> and the <strong>PrototypeFPS_Data</strong> folder together.</li>
       <li>If you find any bugs or have suggestions, let me know!</li>
     </ul>
   </dialog>`);
