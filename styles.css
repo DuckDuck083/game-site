@@ -14,3 +14,28 @@
 @media(max-width:600px){.site-header{height:70px}.site-nav{top:69px}.brand{font-size:14px}.hero{min-height:720px}.hero h1{font-size:4.25rem}.hero .lede{font-size:15px}.section{padding:78px 22px}.section-heading.row{align-items:flex-start;gap:25px;flex-direction:column}.feature-info{padding:35px 25px}.feature-card{min-height:0}.game-image{height:220px}.game-hero-art{min-height:370px}.game-hero-copy{padding:55px 24px}.gallery{grid-template-rows:repeat(3,210px)}.timeline-item{grid-template-columns:1fr;padding-left:28px}.timeline-item time{margin-bottom:8px}.project-card{gap:12px;padding:25px 4px;grid-template-columns:32px 1fr auto}.project-card:hover{padding-inline:8px}.project-card h2{font-size:24px}.cta-band{padding:55px 18px}footer{align-items:flex-start;flex-direction:column;gap:24px}.spec-list{gap:16px}.spec-list b{font-size:20px}}
 @media(max-width:600px){.game-image{height:180px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.radar span{animation:none}}
+/* Dialogs and private card editor */
+.prototype-actions, .card-actions, .editor-toolbar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.button.secondary { background: transparent; color: var(--paper, #f3f1e8); border: 1px solid rgba(255,255,255,.28); cursor: pointer; }
+.card-actions .text-link { background: none; border: 0; padding: 0; cursor: pointer; }
+dialog { color: #f3f1e8; background: #111511; border: 1px solid rgba(179, 255, 0, .42); box-shadow: 0 30px 90px rgba(0,0,0,.75); }
+dialog::backdrop { background: rgba(3, 6, 4, .82); backdrop-filter: blur(7px); }
+.instructions-modal { width: min(680px, calc(100% - 32px)); max-height: 88vh; padding: clamp(26px, 5vw, 52px); }
+.instructions-modal h2, .owner-editor h2 { font-family: "Barlow Condensed", sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); margin: 10px 0 24px; text-transform: uppercase; }
+.instructions-modal h3 { margin: 25px 0 8px; font-family: "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+.instructions-modal li { margin: 9px 0; line-height: 1.55; }
+.instructions-modal a { color: #b3ff00; }
+.modal-note { border-left: 2px solid #b3ff00; padding: 10px 14px; color: rgba(255,255,255,.7); }
+.modal-close { position: absolute; top: 14px; right: 18px; border: 0; background: none; color: #f3f1e8; font-size: 2rem; cursor: pointer; }
+.owner-editor { width: min(1050px, calc(100% - 30px)); max-height: 92vh; padding: clamp(24px, 4vw, 44px); }
+.editor-help { color: rgba(255,255,255,.68); margin-bottom: 26px; }
+kbd { border: 1px solid rgba(255,255,255,.25); background: #242924; padding: 2px 6px; border-radius: 4px; }
+.editor-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.editor-card { display: grid; gap: 12px; border: 1px solid rgba(255,255,255,.14); padding: 18px; }
+.editor-card legend { color: #b3ff00; font-weight: 700; padding: 0 8px; }
+.editor-card label { display: grid; gap: 5px; color: rgba(255,255,255,.72); font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; }
+.editor-card input, .editor-card textarea, .editor-card select { width: 100%; border: 1px solid rgba(255,255,255,.2); background: #090c09; color: white; padding: 10px; font: inherit; }
+.editor-card textarea { min-height: 88px; resize: vertical; }
+.remove-game { justify-self: start; color: #ff806d; background: transparent; border: 0; padding: 5px 0; cursor: pointer; }
+.editor-toolbar { position: sticky; bottom: -44px; margin: 28px -44px -44px; padding: 18px 44px; background: rgba(17,21,17,.96); border-top: 1px solid rgba(255,255,255,.12); }
+.import-games { display: inline-flex; }
