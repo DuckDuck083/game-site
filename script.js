@@ -103,10 +103,19 @@ const defaultGames = [
     platform: "Browser · Free",
     imageClass: "two",
     link: "https://duckduck083.github.io/Chess/"
+  },
+  {
+    title: "Casino",
+    description: "Spin the reels and test your luck in this fast-paced browser slot machine.",
+    status: "Play now",
+    category: "playable",
+    platform: "Browser · Free",
+    imageClass: "three",
+    link: "https://duckduck083.github.io/slot-machine/"
   }
 ];
 
-const storageKey = "duckduck083-games-v1";
+const storageKey = "duckduck083-games-v2";
 let games;
 try {
   const savedGames = JSON.parse(localStorage.getItem(storageKey));
