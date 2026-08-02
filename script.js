@@ -147,7 +147,11 @@ const gameGrid = document.querySelector("#game-grid");
 let renderGames;
 if (gameGrid) {
   renderGames = (filter = "all") => {
-    gameGrid.innerHTML = games.map((game) => {
+    const favoriteTitles = (gameGrid.dataset.favorites || "").split(",").map((title) => title.trim()).filter(Boolean);
+    const displayedGames = favoriteTitles.length
+      ? favoriteTitles.map((title) => games.find((game) => game.title.toLowerCase() === title.toLowerCase()) || defaultGames.find((game) => game.title.toLowerCase() === title.toLowerCase())).filter(Boolean)
+      : games;
+    gameGrid.innerHTML = displayedGames.map((game, index) => {
       const imageStyle = game.imageUrl ? `style="background-image:url('${escapeHtml(game.imageUrl)}')"` : "";
       const hidden = filter !== "all" && game.category !== filter ? " hidden" : "";
       const statusClass = game.category === "playable" ? " live" : "";
@@ -155,8 +159,9 @@ if (gameGrid) {
       const instructionsButton = game.title.toLowerCase() === "prototypefps"
         ? '<button class="text-link instructions-trigger" type="button">Instructions <span>?</span></button>'
         : "";
+      const favoriteNumber = favoriteTitles.length ? `<span class="favorite-number" aria-hidden="true">0${index + 1}</span>` : "";
       return `<article class="game-card reveal visible${hidden}" data-category="${game.category}">
-        <div class="game-image ${escapeHtml(game.imageClass || "")}" ${imageStyle} role="img" aria-label="${escapeHtml(game.title)} artwork"></div>
+        <div class="game-image ${escapeHtml(game.imageClass || "")}" ${imageStyle} role="img" aria-label="${escapeHtml(game.title)} artwork">${favoriteNumber}</div>
         <div class="game-card-body">
           <div class="game-card-head"><span class="status${statusClass}">${escapeHtml(game.status)}</span><span class="platform">${escapeHtml(game.platform)}</span></div>
           <h2>${escapeHtml(game.title)}</h2><p>${escapeHtml(game.description)}</p>
