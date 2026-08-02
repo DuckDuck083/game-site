@@ -17,7 +17,7 @@
 
 /* Favorites page */
 .favorites-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 78% 45%,rgba(184,255,44,.13),transparent 22%),linear-gradient(115deg,transparent 64%,rgba(184,255,44,.04) 64%)}
-.favorites-hero:after{content:"04";position:absolute;right:max(7vw,24px);top:50%;transform:translateY(-50%);font:800 clamp(9rem,20vw,18rem)/1 var(--display);color:transparent;-webkit-text-stroke:1px rgba(184,255,44,.12);pointer-events:none}
+.favorites-hero:after{content:"05";position:absolute;right:max(7vw,24px);top:50%;transform:translateY(-50%);font:800 clamp(9rem,20vw,18rem)/1 var(--display);color:transparent;-webkit-text-stroke:1px rgba(184,255,44,.12);pointer-events:none}
 .favorites-hero>*{position:relative;z-index:1}
 .favorites-section{background:linear-gradient(180deg,#0b0f0c,var(--ink) 45%)}
 .favorites-count{margin:0;color:var(--acid);font:700 12px var(--display);letter-spacing:2px}
