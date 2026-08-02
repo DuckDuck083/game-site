@@ -17,16 +17,17 @@
 
 /* Favorites page */
 .favorites-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 78% 45%,rgba(184,255,44,.13),transparent 22%),linear-gradient(115deg,transparent 64%,rgba(184,255,44,.04) 64%)}
-.favorites-hero:after{content:"05";position:absolute;right:max(7vw,24px);top:50%;transform:translateY(-50%);font:800 clamp(9rem,20vw,18rem)/1 var(--display);color:transparent;-webkit-text-stroke:1px rgba(184,255,44,.12);pointer-events:none}
+.favorites-hero:after{content:attr(data-count);position:absolute;right:max(7vw,24px);top:50%;transform:translateY(-50%);font:800 clamp(9rem,20vw,18rem)/1 var(--display);color:transparent;-webkit-text-stroke:1px rgba(184,255,44,.12);pointer-events:none}
 .favorites-hero>*{position:relative;z-index:1}
 .favorites-section{background:linear-gradient(180deg,#0b0f0c,var(--ink) 45%)}
 .favorites-count{margin:0;color:var(--acid);font:700 12px var(--display);letter-spacing:2px}
-.favorites-grid{grid-template-columns:repeat(2,1fr);gap:22px}
-.favorites-grid .game-image{height:280px}
+.favorites-grid{grid-template-columns:repeat(3,1fr);gap:16px}
+.favorites-grid .game-image{height:170px}
+.favorites-grid .game-card-body{padding:18px}.favorites-grid .game-card h2{font-size:26px}.favorites-grid .game-card p{font-size:12px;line-height:1.5}
 .favorite-number{position:absolute;z-index:1;right:18px;top:8px;font:800 68px/1 var(--display);color:rgba(232,238,229,.13);letter-spacing:-3px;transition:color .25s}
 .favorites-grid .game-card:hover .favorite-number{color:rgba(184,255,44,.38)}
-@media(max-width:900px){.favorites-grid{grid-template-columns:1fr}}
-@media(max-width:600px){.favorites-hero:after{right:-15px}.favorites-grid .game-image{height:210px}}
+@media(max-width:900px){.favorites-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.favorites-hero:after{right:-15px}.favorites-grid{grid-template-columns:1fr}.favorites-grid .game-image{height:170px}}
 /* Dialogs and private card editor */
 .prototype-actions, .card-actions, .editor-toolbar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 .button.secondary { background: transparent; color: var(--paper, #f3f1e8); border: 1px solid rgba(255,255,255,.28); cursor: pointer; }
@@ -51,6 +52,11 @@ dialog::backdrop { background: rgba(3, 6, 4, .82); backdrop-filter: blur(7px); }
 kbd { border: 1px solid rgba(255,255,255,.25); background: #242924; padding: 2px 6px; border-radius: 4px; }
 .editor-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
 .editor-card { display: grid; gap: 12px; border: 1px solid rgba(255,255,255,.14); padding: 18px; }
+.editor-order { display:flex; justify-content:space-between; gap:8px; }
+.move-game { color:#b3ff00; background:transparent; border:1px solid rgba(179,255,0,.35); padding:7px 10px; cursor:pointer; }
+.move-game:disabled { opacity:.28; cursor:not-allowed; }
+.editor-card .favorite-toggle { display:flex; grid-template-columns:auto 1fr; align-items:center; gap:9px; color:#b3ff00; }
+.editor-card .favorite-toggle input { width:auto; accent-color:#b3ff00; }
 .editor-card legend { color: #b3ff00; font-weight: 700; padding: 0 8px; }
 .editor-card label { display: grid; gap: 5px; color: rgba(255,255,255,.72); font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; }
 .editor-card input, .editor-card textarea, .editor-card select { width: 100%; border: 1px solid rgba(255,255,255,.2); background: #090c09; color: white; padding: 10px; font: inherit; }

@@ -15,17 +15,17 @@
     <nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="games.html">Games</a><a class="active" href="favorites.html">Favorites</a><a href="prototypefps.html">PrototypeFPS</a></nav>
   </header>
   <main>
-    <section class="page-hero favorites-hero reveal">
-      <p class="eyebrow"><span></span> Top picks // 05 selected</p>
+    <section class="page-hero favorites-hero reveal" data-count="05">
+      <p class="eyebrow"><span></span> Top picks // <b data-favorites-count>05</b> selected</p>
       <h1>FAVORITE <em>GAMES</em></h1>
-      <p>Five standout missions, ready to play. Pick a world and jump in.</p>
+      <p>Your hand-picked missions, ready to play. Pick a world and jump in.</p>
     </section>
     <section class="section favorites-section">
       <div class="section-heading row reveal">
         <div><p class="eyebrow"><span></span> Curated collection</p><h2>THE <em>SHORTLIST</em></h2></div>
-        <p class="favorites-count">05 / PLAYABLE</p>
+        <p class="favorites-count"><span data-favorites-count>05</span> / PLAYABLE</p>
       </div>
-      <div class="game-grid favorites-grid" id="game-grid" data-favorites="Zombie Shooter,Bounty Hunter,Casino,PrototypeFPS,Fortnite Slop"></div>
+      <div class="game-grid favorites-grid" id="game-grid"></div>
     </section>
   </main>
   <footer><p>Independent games. Built with intent.</p><span>&copy; <span data-year></span></span></footer>

@@ -116,6 +116,8 @@ const defaultGames = [
 ];
 
 const storageKey = "duckduck083-games-v2";
+const favoritesStorageKey = "duckduck083-favorites-v1";
+const defaultFavoriteTitles = ["Zombie Shooter", "Bounty Hunter", "Casino", "PrototypeFPS", "Fortnite Slop"];
 let games;
 try {
   const savedGames = JSON.parse(localStorage.getItem(storageKey));
@@ -147,10 +149,22 @@ const gameGrid = document.querySelector("#game-grid");
 let renderGames;
 if (gameGrid) {
   renderGames = (filter = "all") => {
-    const favoriteTitles = (gameGrid.dataset.favorites || "").split(",").map((title) => title.trim()).filter(Boolean);
-    const displayedGames = favoriteTitles.length
+    const isFavoritesPage = document.body.dataset.page === "favorites";
+    let favoriteTitles;
+    try {
+      const savedFavorites = JSON.parse(localStorage.getItem(favoritesStorageKey));
+      favoriteTitles = Array.isArray(savedFavorites) ? savedFavorites : defaultFavoriteTitles;
+    } catch {
+      favoriteTitles = defaultFavoriteTitles;
+    }
+    const displayedGames = isFavoritesPage
       ? favoriteTitles.map((title) => games.find((game) => game.title.toLowerCase() === title.toLowerCase()) || defaultGames.find((game) => game.title.toLowerCase() === title.toLowerCase())).filter(Boolean)
       : games;
+    if (isFavoritesPage) {
+      const count = displayedGames.length;
+      document.querySelectorAll("[data-favorites-count]").forEach((element) => { element.textContent = String(count).padStart(2, "0"); });
+      document.querySelector(".favorites-hero")?.setAttribute("data-count", String(count).padStart(2, "0"));
+    }
     gameGrid.innerHTML = displayedGames.map((game, index) => {
       const imageStyle = game.imageUrl ? `style="background-image:url('${escapeHtml(game.imageUrl)}')"` : "";
       const hidden = filter !== "all" && game.category !== filter ? " hidden" : "";
@@ -159,7 +173,7 @@ if (gameGrid) {
       const instructionsButton = game.title.toLowerCase() === "prototypefps"
         ? '<button class="text-link instructions-trigger" type="button">Instructions <span>?</span></button>'
         : "";
-      const favoriteNumber = favoriteTitles.length ? `<span class="favorite-number" aria-hidden="true">0${index + 1}</span>` : "";
+      const favoriteNumber = isFavoritesPage ? `<span class="favorite-number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>` : "";
       return `<article class="game-card reveal visible${hidden}" data-category="${game.category}">
         <div class="game-image ${escapeHtml(game.imageClass || "")}" ${imageStyle} role="img" aria-label="${escapeHtml(game.title)} artwork">${favoriteNumber}</div>
         <div class="game-card-body">
@@ -225,7 +239,7 @@ if (gameGrid) {
       <button class="modal-close editor-close" type="button" aria-label="Close editor">&times;</button>
       <p class="eyebrow"><span></span> Owner controls</p>
       <h2 id="editor-title">Game card editor</h2>
-      <p class="editor-help">Changes are stored only in this browser. Press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> to open this panel.</p>
+      <p class="editor-help">Changes are stored only in this browser. Type <kbd>editmustardmango</kbd> anywhere outside a form to open this panel. Use the arrows to put your best games on top.</p>
       <div class="editor-list"></div>
       <div class="editor-toolbar">
         <button class="button secondary add-game" type="button">+ Add card</button>
@@ -236,10 +250,19 @@ if (gameGrid) {
     </dialog>`);
   const editor = document.querySelector(".owner-editor");
   const editorList = editor.querySelector(".editor-list");
+  const getFavoriteTitles = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(favoritesStorageKey));
+      return Array.isArray(saved) ? saved : defaultFavoriteTitles;
+    } catch { return defaultFavoriteTitles; }
+  };
   const renderEditor = () => {
+    const favoriteTitles = getFavoriteTitles();
     editorList.innerHTML = games.map((game, index) => `
       <fieldset class="editor-card">
         <legend>Card ${index + 1}</legend>
+        <input name="imageClass" type="hidden" value="${escapeHtml(game.imageClass || "")}">
+        <div class="editor-order"><button class="move-game" data-direction="-1" type="button" aria-label="Move ${escapeHtml(game.title)} up"${index === 0 ? " disabled" : ""}>&#8593; Move up</button><button class="move-game" data-direction="1" type="button" aria-label="Move ${escapeHtml(game.title)} down"${index === games.length - 1 ? " disabled" : ""}>Move down &#8595;</button></div>
         <label>Name<input name="title" value="${escapeHtml(game.title)}"></label>
         <label>Description<textarea name="description">${escapeHtml(game.description)}</textarea></label>
         <label>Link<input name="link" type="url" value="${escapeHtml(game.link)}"></label>
@@ -247,14 +270,21 @@ if (gameGrid) {
         <label>Platform<input name="platform" value="${escapeHtml(game.platform)}"></label>
         <label>Category<select name="category">${["playable", "development", "concept"].map((category) => `<option${game.category === category ? " selected" : ""}>${category}</option>`).join("")}</select></label>
         <label>Image URL (optional)<input name="imageUrl" type="url" value="${escapeHtml(game.imageUrl || "")}"></label>
+        <label class="favorite-toggle"><input name="favorite" type="checkbox"${game.favorite ?? favoriteTitles.some((title) => title.toLowerCase() === game.title.toLowerCase()) ? " checked" : ""}> Show on Favorites page</label>
         <button class="remove-game" type="button">Remove card</button>
       </fieldset>`).join("");
   };
-  const readEditor = () => [...editorList.querySelectorAll(".editor-card")].map((card) =>
-    Object.fromEntries([...card.querySelectorAll("input, textarea, select")].map((input) => [input.name, input.value.trim()]))
-  );
+  const readEditor = () => [...editorList.querySelectorAll(".editor-card")].map((card) => {
+    const result = Object.fromEntries([...card.querySelectorAll("input:not([type=checkbox]), textarea, select")].map((input) => [input.name, input.value.trim()]));
+    result.favorite = card.querySelector('[name="favorite"]').checked;
+    return result;
+  });
+  let editCodeBuffer = "";
   document.addEventListener("keydown", (event) => {
-    if (event.altKey && event.shiftKey && event.key.toLowerCase() === "e") {
+    if (event.key === "Escape" || event.ctrlKey || event.altKey || event.metaKey || event.target.matches("input, textarea, select, [contenteditable]")) return;
+    if (event.key.length === 1) editCodeBuffer = (editCodeBuffer + event.key.toLowerCase()).slice(-18);
+    if (editCodeBuffer.endsWith("editmustardmango")) {
+      editCodeBuffer = "";
       renderEditor();
       editor.showModal();
     }
@@ -262,6 +292,15 @@ if (gameGrid) {
   editor.addEventListener("click", (event) => {
     if (event.target.closest(".editor-close")) editor.close();
     if (event.target.closest(".remove-game")) event.target.closest(".editor-card").remove();
+    if (event.target.closest(".move-game")) {
+      games = readEditor();
+      const card = event.target.closest(".editor-card");
+      const index = [...editorList.children].indexOf(card);
+      const destination = index + Number(event.target.closest(".move-game").dataset.direction);
+      [games[index], games[destination]] = [games[destination], games[index]];
+      renderEditor();
+      editorList.children[destination]?.scrollIntoView({ block: "nearest" });
+    }
     if (event.target.closest(".add-game")) {
       games = readEditor();
       games.push({ title: "New Game", description: "Add a description.", link: "https://", status: "In development", platform: "TBA", category: "development", imageClass: "one" });
@@ -269,8 +308,11 @@ if (gameGrid) {
       editorList.lastElementChild.scrollIntoView({ behavior: "smooth" });
     }
     if (event.target.closest(".save-games")) {
-      games = readEditor();
+      const editedGames = readEditor();
+      const favoriteTitles = editedGames.filter((game) => game.favorite).map((game) => game.title);
+      games = editedGames.map(({ favorite, ...game }) => game);
       localStorage.setItem(storageKey, JSON.stringify(games));
+      localStorage.setItem(favoritesStorageKey, JSON.stringify(favoriteTitles));
       renderGames(document.querySelector("#game-filters .active")?.dataset.filter || "all");
       editor.close();
     }
